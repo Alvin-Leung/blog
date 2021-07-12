@@ -45,3 +45,29 @@ Examples of actions on constraints:
 - `RESTRICT`
 - `CASCADE`
 - `SET NULL`
+
+Example with SQL:
+
+Here, we are creating a parent `products` table, and a child `inventory` table. `inventory.product_id` is a foreign key that points to `products.product_id`. When a product row is deleted, any inventory row with an `inventory.product_id` matching the deleted product item's primary key will have it's `inventory.product_id` nullified.
+
+```sql
+CREATE TABLE products
+( product_id INT PRIMARY KEY,
+  product_name VARCHAR(50) NOT NULL,
+  category VARCHAR(25)
+);
+
+CREATE TABLE inventory
+( inventory_id INT PRIMARY KEY,
+  product_id INT,
+  quantity INT,
+  min_level INT,
+  max_level INT,
+  CONSTRAINT fk_inv_product_id
+    FOREIGN KEY (product_id)
+    REFERENCES products (product_id)
+    ON DELETE SET NULL
+);
+```
+
+Source: https://www.techonthenet.com/sql_server/foreign_keys/foreign_delete_null.php
