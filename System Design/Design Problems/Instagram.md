@@ -111,7 +111,7 @@ At a high-level (i.e. omitting caches, load balancers, replicas, and message bro
 7. UserFollow table
 8. Photo storage
 
-![](../images/2020-08-24-19-25-07-high-level-design.png)
+![](images/2020-08-24-19-25-07-high-level-design.png)
 *Figure 1: High-Level System Overview*
 
 # Detailed Design
@@ -120,7 +120,7 @@ Let's go ahead, pick a few components of our system, and drill in a bit deeper.
 
 ### Feature: Reading and Writing
 
-![](../images/2020-08-24-19-24-48-write-service.png)
+![](images/2020-08-24-19-24-48-write-service.png)
 *Figure 2: Write Service*
 
 Steps for uploading a photo:
@@ -133,7 +133,7 @@ Steps for uploading a photo:
 6. On entry creation success, a success response is sent back to **Write Service**
 7. A success response is sent back to the client via the **App Server**
 
-![](../images/2020-08-24-19-24-32-read-service.png)
+![](images/2020-08-24-19-24-32-read-service.png)
 *Figure 3: Read Service*
 
 Steps for viewing a photo:
@@ -161,7 +161,7 @@ The high read volume gives us an excellent opportunity to implement one or more 
 
 Since **Read Service** is expected to be a scaled service with multiple instances, a global cache could be used for caching recently requested **PhotoMeta Table** values. In addition, we could have a CDN for caching photos at geographically closer locations to requesting users.
 
-![](../images/2020-08-24-19-23-50-read-service-with-cache.png)
+![](images/2020-08-24-19-23-50-read-service-with-cache.png)
 *Figure 4: Read Service With Caching*
 
 **What should be the cache invalidation scheme?**
@@ -195,7 +195,7 @@ The requirements for this section need further clarication. To extend on the hig
 - If a followee denies the request, the follower's client will revert the 'Requesting' back to the 'Follow' button with no notification
 - If a followee approves the request, then the follower-followee relationship will be confirmed, and the follower will have access to the followee's non-public profile. No notification will be sent for this case as well.
 
-![](../images/2020-08-24-20-30-21-follow-service.png)
+![](images/2020-08-24-20-30-21-follow-service.png)
 *Figure 5: Follow Service*
 
 Steps for a follow request that is approved:
