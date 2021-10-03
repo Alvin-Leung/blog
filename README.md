@@ -1,7 +1,7 @@
 # Index
 
 **System Design Examples**
-* [Designing Instagram](./System%20Design/Designing%20Instagram.md)
+* [Designing Instagram](./System%20Design/Design%20Problems/Instagram.md)
 
 **Database Concepts**
 * [Foreign Keys](./Databases/General%20Concepts/Foreign%20Keys.md)
